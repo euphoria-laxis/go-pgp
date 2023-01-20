@@ -1,33 +1,36 @@
 package pgp_test
 
 import (
-	"errors"
 	"fmt"
 	"github.com/jchavannes/go-pgp/pgp"
+	"golang.org/x/crypto/openpgp"
 	"testing"
 )
 
 func TestEncrypt(t *testing.T) {
-	fmt.Println("Entcrypt test: START")
+	fmt.Println("Encrypt test: START")
 	pubEntity, err := pgp.GetEntity([]byte(TestPublicKey), []byte{})
 	if err != nil {
-		t.Error(fmt.Errorf("Error getting entity: %v", err))
+		t.Error(fmt.Errorf("error getting entity: %v", err))
 	}
 	fmt.Println("Created public key entity.")
 
-	encrypted, err := pgp.Encrypt(pubEntity, []byte(TestMessage))
+	var encrypted []byte
+	encrypted, err = pgp.Encrypt(pubEntity, []byte(TestMessage))
 	if err != nil {
 		t.Error(err)
 	}
 	fmt.Println("Encrypted test message with public key entity.")
 
-	privEntity, err := pgp.GetEntity([]byte(TestPublicKey), []byte(TestPrivateKey))
+	var privateEntity *openpgp.Entity
+	privateEntity, err = pgp.GetEntity([]byte(TestPublicKey), []byte(TestPrivateKey))
 	if err != nil {
-		t.Error(fmt.Errorf("Error getting entity: %v", err))
+		t.Error(fmt.Errorf("error getting entity: %v", err))
 	}
 	fmt.Println("Created private key entity.")
 
-	decrypted, err := pgp.Decrypt(privEntity, encrypted)
+	var decrypted []byte
+	decrypted, err = pgp.Decrypt(privateEntity, encrypted)
 	if err != nil {
 		t.Error(err)
 	}
@@ -35,10 +38,10 @@ func TestEncrypt(t *testing.T) {
 
 	decryptedMessage := string(decrypted)
 	if decryptedMessage != TestMessage {
-		t.Error(errors.New("Decrypted message does not equal original."))
+		t.Error(fmt.Errorf("decrypted message does not equal original"))
 	}
 	fmt.Println("Decrypted message equals original message.")
-	fmt.Println("Entcrypt test: END\n")
+	fmt.Println("Encrypt test: END")
 }
 
 const TestMessage = "hello world"
@@ -101,4 +104,3 @@ XxbNBnj46XwaIs6OlrO2htV0al2/WVTNnSLxCyoHXoJEDXyaOyNKn1jM/FczgYQJ
 069uC804ohOfjLmbtUEYE7Hjeo5utPm2ryjnakgV5AStKgL0SyFZUwN/DwARAQAB
 =gO1a
 -----END PGP PUBLIC KEY BLOCK-----`
-

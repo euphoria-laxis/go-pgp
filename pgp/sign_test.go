@@ -3,6 +3,7 @@ package pgp_test
 import (
 	"fmt"
 	"github.com/jchavannes/go-pgp/pgp"
+	"golang.org/x/crypto/openpgp"
 	"testing"
 )
 
@@ -14,13 +15,15 @@ func TestSignature(t *testing.T) {
 	}
 	fmt.Println("Created private key entity.")
 
-	signature, err := pgp.Sign(entity, []byte(TestMessage))
+	var signature []byte
+	signature, err = pgp.Sign(entity, []byte(TestMessage))
 	if err != nil {
 		t.Error(err)
 	}
 	fmt.Println("Created signature of test message with private key entity.")
 
-	publicKeyEntity, err := pgp.GetEntity([]byte(TestPublicKey), []byte{})
+	var publicKeyEntity *openpgp.Entity
+	publicKeyEntity, err = pgp.GetEntity([]byte(TestPublicKey), []byte{})
 	if err != nil {
 		t.Error(err)
 	}
@@ -31,5 +34,5 @@ func TestSignature(t *testing.T) {
 		t.Error(err)
 	}
 	fmt.Println("Signature verified using public key entity.")
-	fmt.Println("Signature test: END\n")
+	fmt.Println("Signature test: END")
 }
