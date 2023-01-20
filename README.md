@@ -1,6 +1,12 @@
 # Go PGP
 
-Layer on top of `golang.org/x/crypto/openpgp` to handle a few PGP use cases.
+Created from [https://github.com/jchavannes/go-pgp.git](https://github.com/jchavannes/go-pgp.git).
+
+The project was updated to be used as a go package. A part of the code
+was changed and the tests were updated.
+
+Layer on top of `golang.org/x/crypto/openpgp` to handle a few PGP use 
+cases.
 
 ## Examples
 
@@ -55,3 +61,13 @@ if err == nil {
     fmt.Println("Signature verified.")
 }
 ```
+
+## Credits
+
+**Jason Chavannes <jason.chavannes@gmail.com>** for the original
+repository I forked to create this package.
+
+## License
+
+This project is under [MIT License](./LICENSE.md) and can be used for
+your projects.
