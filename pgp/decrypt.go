@@ -15,7 +15,7 @@ func Decrypt(entity *openpgp.Entity, encrypted []byte) ([]byte, error) {
 	// Decode message
 	block, err := armor.Decode(bytes.NewReader(encrypted))
 	if err != nil {
-		return []byte{}, fmt.Errorf("Error decoding: %v", err)
+		return []byte{}, fmt.Errorf("error decoding: %v", err)
 	}
 	if block.Type != "PGP MESSAGE" {
 		return []byte{}, errors.New("invalid message type")
@@ -25,7 +25,7 @@ func Decrypt(entity *openpgp.Entity, encrypted []byte) ([]byte, error) {
 	entityList := openpgp.EntityList{entity}
 	messageReader, err := openpgp.ReadMessage(block.Body, entityList, nil, nil)
 	if err != nil {
-		return []byte{}, fmt.Errorf("Error reading message: %v", err)
+		return []byte{}, fmt.Errorf("error reading message: %v", err)
 	}
 	var read []byte
 	read, err = ioutil.ReadAll(messageReader.UnverifiedBody)
