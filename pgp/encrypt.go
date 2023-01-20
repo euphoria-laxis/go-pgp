@@ -17,7 +17,7 @@ func Encrypt(entity *openpgp.Entity, message []byte) ([]byte, error) {
 	// Create encoder
 	encoderWriter, err := armor.Encode(buf, "PGP MESSAGE", make(map[string]string))
 	if err != nil {
-		return []byte{}, fmt.Errorf("Error creating OpenPGP armor: %v", err)
+		return []byte{}, fmt.Errorf("error creating OpenPGP armor: %v", err)
 	}
 
 	// Create encryptor with encoder

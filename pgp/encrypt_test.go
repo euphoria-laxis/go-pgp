@@ -2,7 +2,7 @@ package pgp_test
 
 import (
 	"fmt"
-	"github.com/jchavannes/go-pgp/pgp"
+	"github.com/euphoria-laxis/go-pgp/pgp"
 	"golang.org/x/crypto/openpgp"
 	"testing"
 )

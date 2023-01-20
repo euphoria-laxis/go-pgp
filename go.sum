@@ -1,4 +1,2 @@
-github.com/jchavannes/go-pgp v0.0.0-20200131171414-e5978e6d02b4 h1:AfTUqDjVFyY40SghT85bXRhpj34DOuIUQLB4DwExzkQ=
-github.com/jchavannes/go-pgp v0.0.0-20200131171414-e5978e6d02b4/go.mod h1:dtFptCZ3M/9AWU38htm1xFvWqaJr5ZvkiOiozne99Ps=
 golang.org/x/crypto v0.0.0-20170504151630-5a033cc77e57 h1:9LlsxwZbhnF02BNA7fzqpVAoOQepoOTtCpZz2t6YeXk=
 golang.org/x/crypto v0.0.0-20170504151630-5a033cc77e57/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
