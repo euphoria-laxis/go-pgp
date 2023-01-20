@@ -17,8 +17,8 @@ func Decrypt(entity *openpgp.Entity, encrypted []byte) ([]byte, error) {
 	if err != nil {
 		return []byte{}, fmt.Errorf("Error decoding: %v", err)
 	}
-	if block.Type != "Message" {
-		return []byte{}, errors.New("Invalid message type")
+	if block.Type != "PGP MESSAGE" {
+		return []byte{}, errors.New("invalid message type")
 	}
 
 	// Decrypt message
