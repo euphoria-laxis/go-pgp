@@ -1,14 +1,13 @@
 package pgp
 
 import (
-	"golang.org/x/crypto/openpgp"
 	"bytes"
-	"fmt"
-	"io"
-	"golang.org/x/crypto/openpgp/armor"
-	"compress/gzip"
 	_ "crypto/sha256"
+	"fmt"
+	"golang.org/x/crypto/openpgp"
+	"golang.org/x/crypto/openpgp/armor"
 	_ "golang.org/x/crypto/ripemd160"
+	"io"
 )
 
 func Encrypt(entity *openpgp.Entity, message []byte) ([]byte, error) {
@@ -16,9 +15,9 @@ func Encrypt(entity *openpgp.Entity, message []byte) ([]byte, error) {
 	buf := new(bytes.Buffer)
 
 	// Create encoder
-	encoderWriter, err := armor.Encode(buf, "Message", make(map[string]string))
+	encoderWriter, err := armor.Encode(buf, "PGP MESSAGE", make(map[string]string))
 	if err != nil {
-		return []byte{}, fmt.Errorf("Error creating OpenPGP armor: %v", err)
+		return []byte{}, fmt.Errorf("error creating OpenPGP armor: %v", err)
 	}
 
 	// Create encryptor with encoder
@@ -27,20 +26,14 @@ func Encrypt(entity *openpgp.Entity, message []byte) ([]byte, error) {
 		return []byte{}, fmt.Errorf("Error creating entity for encryption: %v", err)
 	}
 
-	// Create compressor with encryptor
-	compressorWriter, err := gzip.NewWriterLevel(encryptorWriter, gzip.BestCompression)
-	if err != nil {
-		return []byte{}, fmt.Errorf("Invalid compression level: %v", err)
-	}
-
 	// Write message to compressor
 	messageReader := bytes.NewReader(message)
-	_, err = io.Copy(compressorWriter, messageReader)
+	_, err = io.Copy(encryptorWriter, messageReader)
 	if err != nil {
-		return []byte{}, fmt.Errorf("Error writing data to compressor: %v", err)
+		return []byte{}, fmt.Errorf("Error writing data to message reader: %v", err)
 	}
 
-	compressorWriter.Close()
+	//compressorWriter.Close()
 	encryptorWriter.Close()
 	encoderWriter.Close()
 

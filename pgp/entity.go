@@ -1,9 +1,9 @@
 package pgp
 
 import (
-	"golang.org/x/crypto/openpgp/packet"
-	"golang.org/x/crypto/openpgp"
 	"crypto"
+	"golang.org/x/crypto/openpgp"
+	"golang.org/x/crypto/openpgp/packet"
 )
 
 func GetEntity(publicKey []byte, privateKey []byte) (*openpgp.Entity, error) {
