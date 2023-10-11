@@ -2,6 +2,9 @@
 
 Layer on top of `golang.org/x/crypto/openpgp` to handle a few PGP use cases.
 
+Forked from [jchavannes/go-pgp](https://github.com/jchavannes/go-pgp). Upadated
+to be used as a package.
+
 ## Examples
 
 ### Encryption
