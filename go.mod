@@ -1,4 +1,4 @@
-module github.com/euphoria-laxis/go-pgp
+module euphoria-laxis.fr/euphoria-laxis/go-pgp
 
 go 1.20
 
