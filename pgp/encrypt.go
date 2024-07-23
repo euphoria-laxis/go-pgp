@@ -1,3 +1,4 @@
+euphoria-laxis.fr/euphoria-laxis/go-pgp@v0.1.0/
 package pgp
 
 import (

@@ -1,4 +1,5 @@
-module euphoria-laxis.fr/euphoria-laxis/go-pgp
+// euphoria-laxis.fr/go-packages/go-pgp@v0.1.0
+module euphoria-laxis.fr/go-packages/go-pgp/v0.1.0
 
 go 1.20
 

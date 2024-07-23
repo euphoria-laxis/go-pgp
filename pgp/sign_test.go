@@ -1,3 +1,4 @@
+// euphoria-laxis.fr/go-packages/go-pgp@v0.1.0
 package pgp_test
 
 import (

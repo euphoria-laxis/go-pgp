@@ -1,3 +1,4 @@
+// euphoria-laxis.fr/go-packages/go-pgp@v0.1.0
 MIT License
 
 Copyright (c) 2020 Jason Chavannes <jason.chavannes@gmail.com>
