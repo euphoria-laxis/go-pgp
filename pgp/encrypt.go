@@ -4,10 +4,11 @@ import (
 	"bytes"
 	_ "crypto/sha256"
 	"fmt"
+	"io"
+
 	"golang.org/x/crypto/openpgp"
 	"golang.org/x/crypto/openpgp/armor"
 	_ "golang.org/x/crypto/ripemd160"
-	"io"
 )
 
 func Encrypt(entity *openpgp.Entity, message []byte) ([]byte, error) {

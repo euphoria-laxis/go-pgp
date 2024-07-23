@@ -5,10 +5,11 @@ import (
 	_ "crypto/sha256"
 	"errors"
 	"fmt"
+	"io/ioutil"
+
 	"golang.org/x/crypto/openpgp"
 	"golang.org/x/crypto/openpgp/armor"
 	_ "golang.org/x/crypto/ripemd160"
-	"io/ioutil"
 )
 
 func Decrypt(entity *openpgp.Entity, encrypted []byte) ([]byte, error) {

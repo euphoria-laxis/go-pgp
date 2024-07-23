@@ -2,9 +2,10 @@ package pgp_test
 
 import (
 	"fmt"
-	"github.com/euphoria-laxis/go-pgp/pgp"
-	"golang.org/x/crypto/openpgp"
 	"testing"
+
+	"euphoria-laxis.fr/euphoria-laxis/go-pgp/pgp"
+	"golang.org/x/crypto/openpgp"
 )
 
 func TestSignature(t *testing.T) {

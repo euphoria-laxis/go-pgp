@@ -2,6 +2,7 @@ package pgp
 
 import (
 	"bytes"
+
 	"golang.org/x/crypto/openpgp"
 )
 
